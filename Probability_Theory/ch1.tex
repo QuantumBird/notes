@@ -1,5 +1,6 @@
 \documentclass[UTF8]{ctexart}
 \usepackage{amsmath}
+\usepackage{mathrsfs}
 \title{概率论与数理统计笔记}
 \author{QuantumBird}
 \date{\today}
@@ -30,5 +31,24 @@
 		
 		注：这里的随机事件的定义为老师在讲课时给出的定义，教材上随机事件的原定义不包含第一条。包含第一条性质的随机试验被称为\textbf{可重复的随机试验}，但不可重复的随机试验超出了教材的讨论范围，故暂时将可重复的随机事件称为随机事件。
 		\subsubsection{样本空间}
+		对于一个随机试验，我们虽无法得知其在某条件下的具体结果，但我们可以得知一个随机试验所有可能的结果(随机试验\ 条件2)，则我们可以定义\textbf{样本空间}和\textbf{样本点}如下:
+		\paragraph{样本空间} 随机试验$E$的所有可能结果组成的集合称为$E$的样本空间。记为$S$。
+		\paragraph{样本点} $E$中的每个结果，即样本空间$S$中的每个元素，称为样本点。
+	\subsection{随机事件}
+		\subsubsection{随机事件}
+		\paragraph{随机事件} 一般地，称试验$E$的样本空间$S$的子集为$E$的随机事件，简称为事件。
+		\paragraph{基本事件}由一个样本点组成的单点集称为基本事件。
+		\paragraph{必然事件}样本空间$S$自身被称为必然事件，因为它在每次随机试验中是一定发生的。
+		\paragraph{不可能事件}空集$\emptyset \subset S$，且不包含任何样本点，在试验中不发生，称为不可能事件。
+		\subsection{事件间的关系和运算}
+		由前文的定义可知，随机事件本质是一个集合，故其具有集合的所有运算，部分运算在概率论中有一定的意义，下面从事件的角度上定义事件之间的关系和运算。
+		
+		设试验$E$的样本空间为$S$，而$A,B,A_k(k=1,2,\dots)$是$S$的子集，则我们可以定义如下的关系和运算：
+		\begin{enumerate}
+			\item \textbf{事件的包含} \ 若事件$A$的发生会导致事件$B$的发生，则称事件$B$包含事件$A$，记为$B \supset A$或$A \subset B$。
+			\item \textbf{事件的相等} \ 若有$A \subset B$且$B \subset A$，则$A$与$B$相等，记为$A = B$。
+			\item \textbf{和事件} \ 事件$A$与$B$至少有一个发生的事件，称为事件$A$与$B$的和事件，记为$A \cup B$，或$A + B$。
+			% TODO积事件等。。。。。
+ 		\end{enumerate}
 		
 \end{document}
