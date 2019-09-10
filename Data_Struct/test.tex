@@ -1,0 +1,36 @@
+\documentclass[compress,red]{beamer}
+\mode<presentation>
+
+
+\usepackage{listings}                                 %使用listings包
+
+\begin{document}
+
+% -----------------定义你的代码部分[BEGIN]--------------------%
+
+% \mycode指你的代码名，方便后面直接使用
+
+% emph指定你要强调的关键字
+
+% emphstyle指定强调使用什么颜色
+\defverbatim[colored]\mycode{%
+
+\begin{lstlisting}[frame=single, emph={cout,cin}, emphstyle={\color{blue}}]
+
+
+cout<<"Hello world!";
+cin>>a;
+
+
+\end{lstlisting}
+
+}
+
+%-----------------定义你的代码部分[END]--------------------%
+
+\begin{frame}
+
+% 直接调用
+\mycode
+\end{frame}
+\end{document} 

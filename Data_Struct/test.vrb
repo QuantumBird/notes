@@ -1,0 +1,14 @@
+\frametitle{An Algorithm For Finding Primes Numbers.}
+\begin{verbatim}
+int main (void){
+    std::vector<bool> is_prime (100, true);
+^^Ifor (int i = 2; i < 100; i++)
+^^Iif (is_prime[i]){
+^^I\^^Istd::cout << i << " ";
+^^I\^^Ifor (int j = i; j < 100; is_prime [j] = false, j+=i);
+^^I}
+^^Ireturn 0;
+}
+
+\end{verbatim}
+

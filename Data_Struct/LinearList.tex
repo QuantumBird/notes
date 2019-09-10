@@ -1,0 +1,53 @@
+\documentclass{beamer}
+
+\usepackage[UTF8,space,hyperref]{ctex}
+\usepackage{listing}
+\usepackage{geometry}  
+\usepackage{algorithm}  
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}  
+\usepackage{amsmath} 
+ 
+\usetheme{Madrid}
+\author{高浚哲}
+\institute{西安邮电大学}
+\title{线性表}
+
+\begin{document}
+	
+	\frame{\titlepage}
+	%\frame{\tableofcontents[hideallsubsections]}
+	
+	\begin{frame}[c]\frametitle{线性表基本介绍}
+		\textbf{线性表的定义：}
+		\begin{block}{定义}
+			一个线性表是$n$个具有相同特性的数据元素的有限序列。数据元素是一个抽象的符号，其具体含义在不同的情况下一般不同 \par
+			线性表的相邻元素之间存在着序偶关系。如用$(a_1,\dots, a_{i - 1}, a_i, a_{i + 1},\dots,a_n)$ 表示一个顺序表，则表中$a_{i - 1}$领先于$a_i$，$a_i$领先于$a_{i+1}$，称$a_{i-1}$是$a_i$的直接前驱元素，$a_{i+1}$是$a_i$的直接后继元素。当$i=1,2,\dots,n-1$时，$a_i$有且仅有一个直接后继，当$i=2,3,\dots,n$时，$a_i$有且仅有一个直接前驱
+		\end{block}
+		%\\ \hspace*{\fill} \\
+		\textbf{线性表的实现主要有两种实现方式：}
+		\begin{itemize}
+			\item 顺序表
+			\item 链表
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}[fragile]\frametitle{线性表的接口}
+		\textbf{线性表的接口}
+		\begin{block}{接口}
+			\textbf{newList}()-> LinearList\\
+			\textbf{getItem}(list: LinearList, idx: Int) -> ListElem \\
+			\textbf{len}(list: LinearList) -> Int
+		\end{block}
+	\end{frame}
+
+	\begin{frame}[fragile]\frametitle{Your title}
+\begin{verbatim}
+int add(int a, int b){
+    return a + b;
+}
+\end{verbatim}
+	\end{frame}
+
+
+\end{document}
