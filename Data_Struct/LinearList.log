@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Arch Linux) (preloaded format=xelatex 2019.9.7)  10 SEP 2019 09:32
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Arch Linux) (preloaded format=xelatex 2019.9.7)  12 SEP 2019 03:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1326,12 +1326,6 @@ LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <6> not available
 ]
 \openout4 = `LinearList.vrb'.
 
- (./LinearList.vrb)
-[3
-
-]
-\openout4 = `LinearList.vrb'.
-
  (./LinearList.vrb
 
 Package fontspec Warning: Font "FandolFang-Regular" does not contain requested
@@ -1349,7 +1343,59 @@ Package fontspec Info: Font family 'FandolFang-Regular(0)' created for font
 (fontspec)             <->"[FandolFang-Regular.otf]/OT"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
-) [4
+
+Overfull \hbox (2.62955pt too wide) in paragraph at lines 20--20
+[]    \TU/lmtt/m/n/10.95 T * find(const T & val);   //  \TU/FandolFang-Regular(
+0)/m/n/10.95 通 过 值 来 查 找 表 中 元 素 的 位 置 [] 
+ []
+
+
+Overfull \hbox (2.62955pt too wide) in paragraph at lines 20--20
+[]    \TU/lmtt/m/n/10.95 void insert(T * pos, T val); //  \TU/FandolFang-Regula
+r(0)/m/n/10.95 将 元 素 插 入 到 表 中 指 定 位 置 [] 
+ []
+
+)
+Overfull \vbox (2.58495pt too high) detected at line 56
+ []
+
+[3
+
+]
+\openout4 = `LinearList.vrb'.
+
+ (./LinearList.vrb) [4
+
+]
+\openout4 = `LinearList.vrb'.
+
+ (./LinearList.vrb) [5
+
+]
+\openout4 = `LinearList.vrb'.
+
+ (./LinearList.vrb) [6
+
+]
+\openout4 = `LinearList.vrb'.
+
+
+(./LinearList.vrb) [7
+
+]
+\openout4 = `LinearList.vrb'.
+
+ (./LinearList.vrb) [8
+
+]
+\openout4 = `LinearList.vrb'.
+
+ (./LinearList.vrb) [9
+
+] [10
+
+]
+[11
 
 ]
 \tf@nav=\write6
@@ -1361,21 +1407,21 @@ Package fontspec Info: Font family 'FandolFang-Regular(0)' created for font
 \tf@snm=\write8
 \openout8 = `LinearList.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 53.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 53.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 169.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 169.
  (./LinearList.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 53.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 53.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 169.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 169.
 Package rerunfilecheck Info: File `LinearList.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E.
  ) 
 Here is how much of TeX's memory you used:
- 35694 strings out of 492922
- 730062 string characters out of 6138852
- 814525 words of memory out of 5000000
- 39166 multiletter control sequences out of 15000+600000
+ 35775 strings out of 492922
+ 734602 string characters out of 6138852
+ 818015 words of memory out of 5000000
+ 39237 multiletter control sequences out of 15000+600000
  537668 words of font info for 71 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 64i,15n,78p,777b,641s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 64i,15n,78p,777b,759s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on LinearList.pdf (4 pages).
+Output written on LinearList.pdf (11 pages).
