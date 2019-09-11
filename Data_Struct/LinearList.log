@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Arch Linux) (preloaded format=xelatex 2019.9.7)  12 SEP 2019 03:20
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Arch Linux) (preloaded format=xelatex 2019.9.7)  12 SEP 2019 03:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1416,11 +1416,11 @@ Package rerunfilecheck Info: File `LinearList.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E.
  ) 
 Here is how much of TeX's memory you used:
- 35775 strings out of 492922
- 734602 string characters out of 6138852
- 818015 words of memory out of 5000000
- 39237 multiletter control sequences out of 15000+600000
- 537668 words of font info for 71 fonts, out of 8000000 for 9000
+ 35782 strings out of 492922
+ 735222 string characters out of 6138852
+ 817288 words of memory out of 5000000
+ 39245 multiletter control sequences out of 15000+600000
+ 537660 words of font info for 70 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  64i,15n,78p,777b,759s stack positions out of 5000i,500n,10000p,200000b,80000s
 
