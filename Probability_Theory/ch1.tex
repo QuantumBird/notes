@@ -40,7 +40,7 @@
 		\paragraph{基本事件}由一个样本点组成的单点集称为基本事件。
 		\paragraph{必然事件}样本空间$S$自身被称为必然事件，因为它在每次随机试验中是一定发生的。
 		\paragraph{不可能事件}空集$\emptyset \subset S$，且不包含任何样本点，在试验中不发生，称为不可能事件。
-		\subsection{事件间的关系和运算}
+		\subsubsection{事件间的关系和运算}
 		由前文的定义可知，随机事件本质是一个集合，故其具有集合的所有运算，部分运算在概率论中有一定的意义，下面从事件的角度上定义事件之间的关系和运算。
 		
 		设试验$E$的样本空间为$S$，而$A,B,A_k(k=1,2,\dots)$是$S$的子集，则我们可以定义如下的关系和运算：
@@ -50,5 +50,21 @@
 			\item \textbf{和事件} \ 事件$A$与$B$至少有一个发生的事件，称为事件$A$与$B$的和事件，记为$A \cup B$，或$A + B$。
 			% TODO积事件等。。。。。
  		\end{enumerate}
+		\subsection{随机事件的概率}
+			% TODO
+		\subsection{古典概形与几何概型}
+		\subsection{条件概率}
+		\paragraph{条件概率}事件$A$发生的条件下事件$B$发生的概率，记为$P(B|A)$，其中
+		\[P(B|A) = \frac{P(AB)}{P(A)}\]
+		\paragraph{性质}
+		\begin{itemize}
+			\item \textbf{非负性}:\ $P(B|A)\le 0$
+			\item \textbf{规范性}:\ $P(S|B)=1,P(\emptyset|B)=0$
+		\end{itemize}
+		% TODO
+		\subsection{全概率公式与贝叶斯公式}
+		\paragraph{贝叶斯公式}
+		\[P(B_i|A)=\frac{P(A|B_i)P(B_i)}{\sum^n_{j=1}P(A|B_j)P(B_j)}\]
+		
 		
 \end{document}
