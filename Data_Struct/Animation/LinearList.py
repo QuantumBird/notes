@@ -106,10 +106,12 @@ class proc_build(Scene):
             Write(elem_arr)
         )
         # build array process
+        arr_obj = []
         for i in range(5):
             tmp = Rectangle(height=1, width=1, color=YELLOW)
             tmp.move_to(5*RIGHT + 2*UP)
             self.play(tmp.move_to, i*RIGHT + UP)
+            arr_obj.append(tmp)
         len_text = TextMobject("int  ", "len ", "$\\rightarrow$").move_to(2.1*LEFT)
         len_text[0].set_color(BLUE)
         len_text[1].set_color(GREEN)
@@ -118,13 +120,33 @@ class proc_build(Scene):
         zero_text = TextMobject("$0$").move_to(5*RIGHT)
         zero_text.set_color(PURPLE_A)
         self.play(zero_text.move_to, 0.1*DOWN)
+        # fade out:
+        self.play(FadeOut(elem_arr))
+        for e in arr_obj[::-1]:
+            self.play(FadeOutAndShiftDown(e))
+        self.play(
+            FadeOut(len_text),
+            FadeOut(zero_text)
+        )
+        # display final pixle
+        intro_text_1 = TextMobject("To build a sequence list")
+        intro_text_2 = TextMobject("alloc memory first is required")
+        intro_text_3 = TextMobject("Time complexity: ", "$\\mathcal{O}(1)$")
+        intro_text_3[1].set_color(PURPLE_A)
+        g = VGroup(intro_text_1, intro_text_2, intro_text_3).arrange(DOWN).move_to(1*DOWN)
+        self.play(Write(g))
         self.wait()
+        self.play(
+            FadeOut(g),
+            FadeOut(struct_text),
+            FadeOut(title)
+        )
 
 class proc_destory(Scene):
     def construct(self):
         title = TextMobject(
             "Sequence List: ", "destory process"
-        )
+        ).move_to(3*LEFT + 3*UP)
         title[0].set_color(RED)
         title[1].set_color(BLUE)
         self.wait()
@@ -134,17 +156,29 @@ class proc_getitem(Scene):
     def construct(self):
         title = TextMobject(
             "Sequence List: ", "getitem process"
-        )
+        ).move_to(3*LEFT + 3*UP)
         title[0].set_color(RED)
         title[1].set_color(BLUE)
+        self.play(Write(title))
         self.wait()
-        # TODO
+        # # TODO:
+        formula = TexMobject("loc(A_i)=loc(A_0) + L_{element}*i").set_color(YELLOW)
+        formula.move_to(UP*2)
+        self.play(formula.move_to, DOWN*2)
+        arr_obj = []
+        for i in range(6):
+            tmp = Rectangle(height=1, width=1, color=YELLOW)
+            tmp.move_to(UP + 4*RIGHT)
+            self.play(tmp.move_to, UP + RIGHT*(i - 1), speed=3)
+            arr_obj.append(tmp)
+        self.wait()
+
 
 class proc_insert(Scene):
     def construct(self):
         title = TextMobject(
             "Sequence List: ", "insert process"
-        )
+        ).move_to(3*LEFT + 3*UP)
         title[0].set_color(RED)
         title[1].set_color(BLUE)
         self.wait()
@@ -164,7 +198,7 @@ class proc_remove(Scene):
     def construct(self):
         title = TextMobject(
             "Sequence List: ", "remove process"
-        )
+        ).move_to(3*LEFT + 3*UP)
         title[0].set_color(RED)
         title[1].set_color(BLUE)
         self.wait()
