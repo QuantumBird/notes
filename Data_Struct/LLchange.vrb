@@ -1,0 +1,14 @@
+\frametitle{顺序表的查找}
+^^I^^I\begin{block}{查找}
+\begin{verbatim}
+template<typename T>
+T * List<T>::find(const T & val){
+    for(int i = 0; i < len; i ++){   // 线性查找
+        if(lst[i] == val)
+            return & (lst[i]);  // 若找到，则返回元素地址
+    }
+    return NULL;    // 若未找到，则返回 NULL
+}
+\end{verbatim}
+^^I^^I\end{block}
+^^I\ \ \ \ 同样，在顺序表中查找时，通常的做法是便利顺序表，若找到指定的元素则返回，故其时间复杂度为$\mathcal{O}(n)$。

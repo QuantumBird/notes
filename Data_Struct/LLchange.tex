@@ -36,21 +36,11 @@
 		%\textbf{线性表的定义}
 		\begin{block}{定义}
 \begin{verbatim}
-template<typename T> class List{
-    T * lst;   // 指向顺序表的指针
-    int len, maxlen;  //当前表的长度；当前表的最大长度
-public:
-    List();    // 顺序表的构造函数：构造一个顺序表
-    ~List();   // 顺序表的析构函数：销毁一个顺序表
-    T * begin(){return &(lst[0]);}  // 返回指向表头的指针
-    T * end(){return lst + len;}    // 返回指向表尾的指针
-    T & operator[](int idx);   // 顺序表的随机访问函数
-    void push_back(T val);     // 将一个元素插入顺序表尾部
-    int size();   // 返回顺序表的大小
-    T * find(const T & val);   // 通过值来查找表中元素的位置
-    void insert(T * pos, T val); // 将元素插入到表中指定位置
-    void remove(T * pos);    // 删除顺序表指定位置处的元素
-};
+typedef struct List{
+    ElemType * lst;
+    int len;
+    int maxlen;
+} List;
 \end{verbatim}
 		\end{block}
 	\end{frame}
@@ -59,15 +49,19 @@ public:
 		\textbf{顺序表的构造}
 		\begin{block}{构造}
 \begin{verbatim}
-template<typename T>
-List<T>::List(){
-    lst = NULL; len = 0; maxlen = 4; // 初始化表的参数
-    assert(allocater() == 0); // 为表分配内存并处理错误
+List * initList(int max_length){
+    List * ans = (List *)malloc(sizeof(List));
+    if(ans == NULL) return NULL;
+    ans -> lst = (ElemType *)malloc(sizeof(ElemType) * max_length);
+    if(ans -> lst == NULL) return NULL;
+    ans -> len = 0;
+    ans -> maxlen = max_length;
+    return ans;
 }
 \end{verbatim}
 		\end{block}
 		\ \ \ \ 构造一个顺序表的所有操作时间都是已知的，故构造顺序表的时间复杂度是$\mathcal{O}(1)$。\\
-		\ \ \ \ 	其中 allocater() 实现了表的内存分配，每调用一次可以使顺序表的空间翻倍。\\
+		%\ \ \ \ 	其中 allocater() 实现了表的内存分配，每调用一次可以使顺序表的空间翻倍。\\
 		\textbf{顺序表的销毁}\\
 		\ \ \ \ 销毁顺序表的时候，释放顺序表所占的内存。
 	\end{frame}
@@ -88,11 +82,12 @@ T & List<T>::operator[](int idx){
 	\begin{frame}[fragile]\frametitle{顺序表的插入}
 		\begin{block}{将元素插入尾部}
 \begin{verbatim}
-template<typename T>
-void List<T>::push_back(T val){
-    if(len == maxlen)    // 检查顺序表是否已满
-        assert(allocater() == 0);
-    lst[len ++] = val;    // 将元素插入顺序表的尾部
+int insert(List * lt, int idx, ElemType val){
+    for(int i = lt -> len; i > idx; i --)
+        (lt -> lst)[i - 1] = (lt -> lst)[i];
+    (lt -> lst)[idx] = val;
+    lt -> len ++;
+    return 0;
 }
 \end{verbatim}
 		\end{block}
