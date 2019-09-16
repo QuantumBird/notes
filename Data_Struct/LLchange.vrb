@@ -1,13 +1,11 @@
 \frametitle{顺序表的查找}
 ^^I^^I\begin{block}{查找}
 \begin{verbatim}
-template<typename T>
-T * List<T>::find(const T & val){
-    for(int i = 0; i < len; i ++){   // 线性查找
-        if(lst[i] == val)
-            return & (lst[i]);  // 若找到，则返回元素地址
-    }
-    return NULL;    // 若未找到，则返回 NULL
+int find(List * lt, ElemType val){
+    for(int i = 0; i < lt -> len; i ++)
+        if((lt -> lst)[i] == val)
+            return i;
+    return -1;
 }
 \end{verbatim}
 ^^I^^I\end{block}

@@ -49,13 +49,13 @@ typedef struct List{
 		\textbf{顺序表的构造}
 		\begin{block}{构造}
 \begin{verbatim}
-List * initList(int max_length){
+List * initList(int mlen){
     List * ans = (List *)malloc(sizeof(List));
     if(ans == NULL) return NULL;
-    ans -> lst = (ElemType *)malloc(sizeof(ElemType) * max_length);
+    ans -> lst = (ElemType *)malloc(sizeof(ElemType) * mlen);
     if(ans -> lst == NULL) return NULL;
     ans -> len = 0;
-    ans -> maxlen = max_length;
+    ans -> maxlen = mlen;
     return ans;
 }
 \end{verbatim}
@@ -69,10 +69,8 @@ List * initList(int max_length){
 	\begin{frame}[fragile]\frametitle{顺序表的随机访问}
 		\begin{block}{随机访问}
 \begin{verbatim}
-template<typename T>
-T & List<T>::operator[](int idx){
-    assert(0 <= idx && idx < len);  // 检查idx处是否有元素
-    return lst[idx];   // 返回顺序表idx处的元素
+ElemType getItem(List * lt, int idx){
+    return (lt -> lst)[idx];
 }
 \end{verbatim}
 		\end{block}
@@ -83,6 +81,7 @@ T & List<T>::operator[](int idx){
 		\begin{block}{将元素插入尾部}
 \begin{verbatim}
 int insert(List * lt, int idx, ElemType val){
+    if(len == maxlen) return 1;
     for(int i = lt -> len; i > idx; i --)
         (lt -> lst)[i - 1] = (lt -> lst)[i];
     (lt -> lst)[idx] = val;
@@ -97,15 +96,13 @@ int insert(List * lt, int idx, ElemType val){
 	\begin{frame}[fragile]\frametitle{顺序表的插入}
 		\begin{block}{将元素插入指定位置}
 \begin{verbatim}
-template<typename T>
-void List<T>::insert(T * pos, T val){
-    assert(pos >= begin() && pos <= end());  // 越界检查
-    if(len == maxlen)  // 若表已满，则扩张表
-        assert(allocater() == 0);
-    for(T * iter = end(); iter != pos; iter --)
-        *iter = *(iter - 1);  // 将指定位置前的元素后移一位
-    *pos = val;  // 将元素插入指定位置
-    len ++;  // 更新长度
+int insert(List * lt, int idx, ElemType val){
+    if(len == maxlen) return 1;
+    for(int i = lt -> len; i > idx; i --)
+        (lt -> lst)[i - 1] = (lt -> lst)[i];
+    (lt -> lst)[idx] = val;
+    lt -> len ++;
+    return 0;
 }
 \end{verbatim}
 		\end{block}
@@ -115,12 +112,12 @@ void List<T>::insert(T * pos, T val){
 	\begin{frame}[fragile]\frametitle{顺序表的删除}
 		\begin{block}{删除指定位置的元素}
 \begin{verbatim}
-template<typename T>
-void List<T>::remove(T * pos){
-    assert(begin() <= pos && pos < end());  //越界检查
-    for(T * iter = pos; iter + 1 != end(); iter ++)
-        *iter = *(iter + 1);  // 将元素向前移一位
-    len --;  // 更新长度
+int remove(List * lt, int idx, ElemType val){
+    if(lt -> len == 0) return 1;
+    for(int i = idx; i < lt -> len - 1; i ++)
+        (lt -> lst)[i] = (lt -> lst)[i + 1];
+    lt -> len --;
+    return 0;
 }
 \end{verbatim}
 		\end{block}
@@ -130,13 +127,11 @@ void List<T>::remove(T * pos){
 	\begin{frame}[fragile]\frametitle{顺序表的查找}
 		\begin{block}{查找}
 \begin{verbatim}
-template<typename T>
-T * List<T>::find(const T & val){
-    for(int i = 0; i < len; i ++){   // 线性查找
-        if(lst[i] == val)
-            return & (lst[i]);  // 若找到，则返回元素地址
-    }
-    return NULL;    // 若未找到，则返回 NULL
+int find(List * lt, ElemType val){
+    for(int i = 0; i < lt -> len; i ++)
+        if((lt -> lst)[i] == val)
+            return i;
+    return -1;
 }
 \end{verbatim}
 		\end{block}
