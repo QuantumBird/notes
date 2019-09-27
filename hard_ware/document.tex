@@ -1,0 +1,35 @@
+\documentclass[UTF8]{ctexart}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{geometry}
+\usepackage{circuitikz}
+\geometry{left=2.0cm, right=2.0cm, top=2.0cm, bottom=2.5cm}
+\title{模拟电路基础}
+%\author{QuantumBird}
+\date{\today}
+\begin{document}
+	\section{三极管}
+		\subsubsection{失真}
+			\paragraph{截止失真}
+				Q点过低
+			\paragraph{饱和失真}
+				Q点过高
+			\paragraph{最大不失真幅度}
+		\paragraph{动态失真}
+			\paragraph{有负载$R_L$}
+			\begin{itemize}\title{方法}
+				\item 画出交流等效电路：
+					\textbf{交流等效电路}中
+						电容相当于短路， 电源相当于接地\par
+					画直流通路时管子站着画，画交流通路共基级时躺着画；输入信号从左边进入。
+				\item 过Q点$(V_{CEQ},I_{CQ})$和斜率$-\frac{1}{R_L}$画出交流负载线
+			\end{itemize}
+		\subsection{小信号模型分析法}
+			\paragraph{基本思想}:输入信号变化范围很小时，可以认为BJT特性曲线基本为线性。即把非线性转化为线性的工程处理方法。
+			\paragraph{模型}：双端口网络：\par
+			输入特性方程：
+			\[i_B=\]
+			BE之间等效电阻$R_{BE}$电流方向由B到E， CE之间等效受控电流源，电流方向由C到E大小为$I_{BE}$
+			
+			
+\end{document}

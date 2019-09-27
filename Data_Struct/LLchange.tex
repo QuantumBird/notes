@@ -8,10 +8,12 @@
 \usepackage{algpseudocode}  
 \usepackage{amsmath} 
  
-\usetheme{Madrid}
+% Antibes， Madrid
+\usetheme{Antibes}
+\usepackage[orientation=landscape,size=custom,width=16,height=9,scale=0.5,debug]{beamerposter}
 \author{麻珂珂，蒋开慧，高浚哲，皇有为}
 \institute{XUPT}
-\title{线性表}
+\title{顺序表}
 
 \begin{document}
 	
@@ -43,16 +45,17 @@ typedef struct List{
 } List;
 \end{verbatim}
 		\end{block}
+	\ \ \ \ 其中，ElemType 为顺序表中元素的类型， len 为线性表中当前元素的个数， maxlen 为当前线性表中所能容纳的最多的元素个数。
 	\end{frame}
 
 	\begin{frame}[fragile]\frametitle{顺序表的构造和销毁}
-		\textbf{顺序表的构造}
-		\begin{block}{构造}
+		\begin{block}{顺序表的构造}
 \begin{verbatim}
 List * initList(int mlen){
     List * ans = (List *)malloc(sizeof(List));
     if(ans == NULL) return NULL;
-    ans -> lst = (ElemType *)malloc(sizeof(ElemType) * mlen);
+    ans -> lst = \
+        (ElemType *)malloc(sizeof(ElemType) * mlen);
     if(ans -> lst == NULL) return NULL;
     ans -> len = 0;
     ans -> maxlen = mlen;
@@ -66,6 +69,19 @@ List * initList(int mlen){
 		\ \ \ \ 销毁顺序表的时候，释放顺序表所占的内存。
 	\end{frame}
 
+	\begin{frame}[fragile]\frametitle{顺序表的构造和销毁}
+	\begin{block}{顺序表的销毁}
+\begin{verbatim}
+void  destoryList(List * lt){
+    free(lt -> lst);
+    free(lt);
+}
+\end{verbatim}
+	\end{block}
+	\ \ \ \ 构造一个顺序表的所有操作时间都是已知的，故构造顺序表的时间复杂度是$\mathcal{O}(1)$。\\
+	%\ \ \ \ 	其中 allocater() 实现了表的内存分配，每调用一次可以使顺序表的空间翻倍。\\
+	\ \ \ \ 销毁顺序表的时候，释放顺序表所占的内存。时间复杂度：$\mathcal{O}(1)$
+\end{frame}
 	\begin{frame}[fragile]\frametitle{顺序表的随机访问}
 		\begin{block}{随机访问}
 \begin{verbatim}
@@ -80,17 +96,14 @@ ElemType getItem(List * lt, int idx){
 	\begin{frame}[fragile]\frametitle{顺序表的插入}
 		\begin{block}{将元素插入尾部}
 \begin{verbatim}
-int insert(List * lt, int idx, ElemType val){
-    if(len == maxlen) return 1;
-    for(int i = lt -> len; i > idx; i --)
-        (lt -> lst)[i - 1] = (lt -> lst)[i];
-    (lt -> lst)[idx] = val;
-    lt -> len ++;
+int push_back(List * lt, ElemType val){
+    if(lt -> len == lt -> maxlen) return 1;
+    (lt -> lst)[(lt -> len) ++] = val;
     return 0;
 }
 \end{verbatim}
 		\end{block}
-		\ \ \ \ 由于顺序表中的元素是顺序排列的，故将元素插入尾部的时间复杂度是$\mathcal{O}(1)$（当顺序表长度大于最大长度，进行扩张时，时间复杂度为$\mathcal{O}(n)$ (其中$n$为表的长度)）
+		\ \ \ \ 由于顺序表中的元素是顺序排列的，故将元素插入尾部的时间复杂度是$\mathcal{O}(1)$
 	\end{frame}
 
 	\begin{frame}[fragile]\frametitle{顺序表的插入}
@@ -106,7 +119,7 @@ int insert(List * lt, int idx, ElemType val){
 }
 \end{verbatim}
 		\end{block}
-		\ \ \ \ 在顺序表中，将一个元素插入指定位置，需要移动后面的所有元素，故其时间复杂度为$\mathcal{O}(n)$。
+		\ \ \ \ 顺序表插入元素时，需要移动后面的所有元素，时间复杂度为$\mathcal{O}(n)$。
 	\end{frame}
 
 	\begin{frame}[fragile]\frametitle{顺序表的删除}
@@ -135,7 +148,7 @@ int find(List * lt, ElemType val){
 }
 \end{verbatim}
 		\end{block}
-	\ \ \ \ 同样，在顺序表中查找时，通常的做法是便利顺序表，若找到指定的元素则返回，故其时间复杂度为$\mathcal{O}(n)$。
+	\ \ \ \ 同样，在顺序表中查找时，通常的做法是遍历顺序表，若找到指定的元素则返回，故其时间复杂度为$\mathcal{O}(n)$。
 	\end{frame}
 
 	\begin{frame}\frametitle{顺序表总结}
@@ -155,5 +168,26 @@ int find(List * lt, ElemType val){
 		\begin{block}{思考题}
 			\ \ \ \ 在插入排序算法中，我们使用一种线性查找来（反向）扫描已排好的子序列$A[1,\dots, j-1]$，我们可以使用二分查找来把插入排序的最坏情况总运行时间改进到$\Theta(nlgn)$吗？
 		\end{block}
+		\textbf{提示}：\ 对比线性表与链表在随机访问和插入的时间复杂度之间的区别。
 	\end{frame}
+	\begin{frame}\frametitle{思考题}
+	朴素的的插入排序的时间复杂度为$\mathcal{O}(n^2)$，其中，朴素算法每个部分的时间复杂度为：
+	\begin{itemize}
+		\item 寻找插入位置：$\mathcal{O}(n)$
+		\item 将元素插入指定位置：$\mathcal{O}(n)$
+	\end{itemize}
+	\ \ \ \ 插入排序每次把一个元素插入到一个有序的线性表中直到所有元素插入完毕，故时间复杂度为$\mathcal{O}(n^2)$ \\
+	\ \ \ \ 要将插入排序的时间复杂度降低到到$\mathcal{O}(nlogn)$的级别，则必须将两个操作降到至多$\mathcal{O}(logn)$的水平。\\
+	\ \ \ \ 由于插入排序要插入的线性表是有序的，我们很容易想到使用二分查找来寻找插入的位置。对于一个有序的顺序表，寻找一个元素的插入位置仅需$\mathcal{O}(logn)$的事件复杂度。看起来我们成功的将插入排序的时间复杂度降到了$\mathcal{O}(nlogn)$ ：）
+	\end{frame}
+	\begin{frame}\frametitle{思考题}
+	\ \ \ \ 但一个明显的问题是，在使用$\mathcal{O}(logn)$来找到插入位置后，我们仍需$\mathcal{O}(n)$来将元素插入到指定位置，那么整体的时间复杂度仍会是$\mathcal{O}(n^2)$。
+	\ \ \ \ 如何解决插入的问题呢？也许你想到了使用刚刚学习的\textbf{朴素}链表（单向，双向链表）：在已知插入位置的情况下，链表插入一个元素的时间复杂度为$\mathcal{O}(1)$，问题解决！但真的如此么？\\
+	\ \ \ \ 事实上，时间复杂度为$\mathcal{O}(logn)$的二分查找隐含了一个前提，即进行二分查找的线性表需要支持$\mathcal{O}(1)$时间复杂度的随机访问（一个更弱的前提是在$\mathcal{O}(1)$的时间内完成区间中点元素值的查询）。而朴素链表进行随机访问的时间复杂度是$\mathcal{O}(n)$，最终的时间复杂度仍为$\mathcal{O}(n^2)$ ：（
+	\ \ \ \ \\
+	\ \ \ \ (PS: 通过对朴素链表的一些修改，我们能得到一种名为跳跃表(Skip List)的数据结构，可以完美的满足我们的需求，但在此不进行讨论)
+	\end{frame}
+	%\begin{frame}\frametitle{顺序表与线性表的对比}
+	%顺序表的插入
+	%\end{frame}
 \end{document}

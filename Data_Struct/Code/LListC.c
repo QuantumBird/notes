@@ -35,6 +35,12 @@ int find(List * lt, ElemType val){
     return -1;
 }
 
+int push_back(List * lt, ElemType val){
+    if(lt -> len == lt -> maxlen) return 1;
+    (lt -> lst)[(lt -> len) ++] = val;
+    return 0;
+}
+
 int insert(List * lt, int idx, ElemType val){
     for(int i = lt -> len; i > idx; i --)
         (lt -> lst)[i - 1] = (lt -> lst)[i];
@@ -47,5 +53,15 @@ int remove(List * lt, int idx, ElemType val){
     for(int i = idx; i < lt -> len - 1; i ++)
         (lt -> lst)[i] = (lt -> lst)[i + 1];
     lt -> len --;
+}
+
+int main(){
+    List * lt = initList(10);
+    for(int i = 0; i < 5; i ++)
+        push_back(lt, i);
+    for(int i = 0; i < 5; i ++)
+        printf("%d ", getItem(lt, i));
+    printf("\n");
+    return 0;
 }
 
